@@ -25,7 +25,8 @@ export function normalizePayload(payload: StackBlitzPayloadOptions) {
 }
 
 function serialize(data: string): string {
-  return btoa(unescape(encodeURIComponent(data)))
+  return Buffer.from(unescape(encodeURIComponent(data))).toString('base64')
+  // return btoa(unescape(encodeURIComponent(data)))
 }
 
 export function normalizeStackBlitzLink(payload: StackBlitzPayloadOptions) {

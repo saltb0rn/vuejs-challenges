@@ -5,7 +5,8 @@ export function utoa(data: string): string {
   const buffer = strToU8(data)
   const zipped = zlibSync(buffer, { level: 9 })
   const binary = strFromU8(zipped, true)
-  return btoa(binary)
+  return Buffer.from(binary).toString('base64');
+  // return btoa(binary)
 }
 
 export function serialize(files) {
